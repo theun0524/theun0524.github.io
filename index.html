@@ -1,48 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
     <meta charset="utf-8">
-
-    <title>숫자 맞추기</title>
-
+    <title>JavaScript label example</title>
     <style>
-      html {
-        font-family: sans-serif;
-      }
-      body {
-        width: 50%;
-        max-width: 800px;
-        min-width: 480px;
-        margin: 0 auto;
-      }
-      .lastResult {
-        color: white;
-        padding: 3px;
+      p {
+        font-family: 'helvetica neue', helvetica, sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-align: center;
+        border: 2px solid rgba(0,0,200,0.6);
+        background: rgba(0,0,200,0.3);
+        color: rgba(0,0,200,0.6);
+        box-shadow: 1px 1px 2px rgba(0,0,200,0.4);
+        border-radius: 10px;
+        padding: 3px 10px;
+        display: inline-block;
+        cursor: pointer;
       }
     </style>
   </head>
-
   <body>
-    <h1>숫자 맞추기</h1>
-
-    <p>1과 100사이의 숫자 중에서 하나의 숫자가 선택되었습니다.</p>
-    <p>10번의 기회 안에 숫자를 맞춰보세요.</p>
-    <p>입력한 숫자가 큰지 작은지 알려줄 것입니다.</p>
-
-    <div class="form">
-      <label for="guessField">숫자를 입력하세요: </label>
-      <input type="text" id="guessField" class="guessField">
-      <input type="submit" value="확인" class="guessSubmit">
-    </div>
-
-    <div class="resultParas">
-      <p class="guesses"></p>
-      <p class="lastResult"></p>
-      <p class="lowOrHi"></p>
-    </div>
+    <p>Player 1: Chris</p>
 
     <script>
-      // Your JavaScript goes here
+      const para = document.querySelector('p');
+      para.addEventListener('click', updateName);
+      function updateName() {
+        let name = prompt('Enter a new name');
+        para.textContent = 'Player 1: ' + name;
+      }
     </script>
   </body>
 </html>
