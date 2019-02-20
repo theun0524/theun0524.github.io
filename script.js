@@ -1,7 +1,9 @@
-var randomNumber = Math.floor(Math.random()) + 1;
+var randomNumber = Math.floor(Math.random() * 100) + 1;
+console.log(randomNumber);
 var guesses = document.querySelector('.guesses');
 var lastResult = document.querySelector('.lastResult');
-var lowOrHi = document.querySelector('lowOrHi');
+var lowOrHi = document.querySelector('.lowOrHi');
+console.log(lowOrHi);
 var guessSubmit = document.querySelector('.guessSubmit');
 var guessField = document.querySelector('.guessField');
 var guessCount = 1;
@@ -36,7 +38,7 @@ function checkGuess() {
   guessField.value = '';
   guessField.focus();
 }
-guessSubmit.addeventListener('click', checkGuess);
+guessSubmit.addEventListener('click', checkGuess);
 
 function setGameOver() {
   guessField.disabled = true;
@@ -44,7 +46,7 @@ function setGameOver() {
   resetButton = document.createElement('button');
   resetButton.textContent = 'Start new game';
   document.body.appendChild(resetButton);
-  resetButton.addeventListener('click', resetGame);
+  resetButton.addEventListener('click', resetGame);
 }
 
 function resetGame() {
@@ -63,5 +65,5 @@ function resetGame() {
 
   lastResult.style.backgroundColor = 'white';
 
-  randomNumber = Math.floor(Math.random()) + 1;
+  randomNumber = Math.floor(Math.random() * 100) + 1;
 }
