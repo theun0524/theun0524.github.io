@@ -1,29 +1,25 @@
-var randomNumber = Math.floor(Math.random() * 100) + 1;
-
+var randomNumber = Math.floor(Math.random()) + 1;
 var guesses = document.querySelector('.guesses');
 var lastResult = document.querySelector('.lastResult');
-var lowOrHi = document.querySelector('.lowOrHi');
-
+var lowOrHi = document.querySelector('lowOrHi');
 var guessSubmit = document.querySelector('.guessSubmit');
 var guessField = document.querySelector('.guessField');
-
 var guessCount = 1;
 var resetButton;
-guessField.focus();
-
 function checkGuess() {
+
   var userGuess = Number(guessField.value);
-  if (guessCount === 1) {
+  if(guessCount === 1) {
     guesses.textContent = 'Previous guesses: ';
   }
   guesses.textContent += userGuess + ' ';
- 
-  if (userGuess === randomNumber) {
+
+  if(userGuess === randomNumber) {
     lastResult.textContent = 'Congratulations! You got it right!';
     lastResult.style.backgroundColor = 'green';
     lowOrHi.textContent = '';
     setGameOver();
-  } else if (guessCount === 10) {
+  } else if(guessCount === 10) {
     lastResult.textContent = '!!!GAME OVER!!!';
     setGameOver();
   } else {
@@ -35,13 +31,12 @@ function checkGuess() {
       lowOrHi.textContent = 'Last guess was too high!';
     }
   }
- 
+
   guessCount++;
   guessField.value = '';
   guessField.focus();
 }
-
-guessSubmit.addEventListener('click', checkGuess);
+guessSubmit.addeventListener('click', checkGuess);
 
 function setGameOver() {
   guessField.disabled = true;
@@ -49,17 +44,16 @@ function setGameOver() {
   resetButton = document.createElement('button');
   resetButton.textContent = 'Start new game';
   document.body.appendChild(resetButton);
-  resetButton.addEventListener('click', resetGame);
+  resetButton.addeventListener('click', resetGame);
 }
 
 function resetGame() {
   guessCount = 1;
 
   var resetParas = document.querySelectorAll('.resultParas p');
-  for (var i = 0 ; i < resetParas.length ; i++) {
+  for(var i = 0; i < resetParas.length; i++) {
     resetParas[i].textContent = '';
   }
-
   resetButton.parentNode.removeChild(resetButton);
 
   guessField.disabled = false;
@@ -69,5 +63,5 @@ function resetGame() {
 
   lastResult.style.backgroundColor = 'white';
 
-  randomNumber = Math.floor(Math.random() * 100) + 1;
+  randomNumber = Math.floor(Math.random()) + 1;
 }
